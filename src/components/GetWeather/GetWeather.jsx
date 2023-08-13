@@ -21,10 +21,10 @@ const GetWeather = () => {
     }
 
     // handling the weather search !!
-    const handleWeatherSearch = async (event) => {
+    const handleWeatherSearch = (event) => {
         event.preventDefault();
         setLoading(true);
-        await axios.get(`${API.base_url}weather?q=${cityName}&units=metric&appid=${API.key}`)
+        axios.get(`${API.base_url}weather?q=${cityName}&units=metric&appid=${API.key}`)
             .then((response) => {
                 setWeather(response.data);
                 if (response.status === 200) {
@@ -56,12 +56,12 @@ const GetWeather = () => {
     }
 
     // callback function !!
-    async function success(position) {
+    function success(position) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
 
         // Make API call !!
-        await axios.get(`${API.base_url}/weather?lat=${latitude}&lon=${longitude}&appid=${API.key}&units=metric`)
+        axios.get(`${API.base_url}/weather?lat=${latitude}&lon=${longitude}&appid=${API.key}&units=metric`)
             .then(response => {
                 setWeather(response.data);
                 setLoading(false);

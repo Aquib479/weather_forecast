@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import GetWeather from './components/GetWeather/GetWeather';
 
 function App() {

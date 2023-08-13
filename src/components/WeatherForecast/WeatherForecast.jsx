@@ -74,40 +74,36 @@ const WeatherForecast = ({ weather, setResult }) => {
 
     return (
         <>
-            {
-                weather.weather.map(val => {
-                    return <div key={val.id} className='main-container'>
-                        <div className="back-button">
-                            <button onClick={handleClickMoveBack}><IoMdArrowRoundBack /></button>
-                            <p>Weather Forecast</p>
+            <div className='main-container'>
+                <div className="back-button">
+                    <button onClick={handleClickMoveBack}><IoMdArrowRoundBack /></button>
+                    <p>Weather Forecast</p>
+                </div>
+                <div className="icon-image">
+                    <img src={icon.icon} alt="loading.." className='icon-size' />
+                </div>
+                <div className="temp">
+                    <span className='temperature'>{Math.round(weather.main.temp)}°C</span>
+                    <p className='C-detail'>{capitalizeFirst}</p>
+                    <p className='C-detail'><IoLocationSharp /> {weather.name}, {weather.sys.country}</p>
+                </div>
+                <div className="other-details">
+                    <li className='grid-box'>
+                        <img src={humi} alt="loading.." className="icon" />
+                        <div className='more-detail'>
+                            <span className='val'>{Math.round(weather.main.humidity)}%</span>
+                            <p className='val-name'>Humidity</p>
                         </div>
-                        <div className="icon-image">
-                            <img src={icon.icon} alt="loading.." className='icon-size' />
+                    </li>
+                    <li className='grid-box'>
+                        <img src={feel} alt="loading.." className="icon" />
+                        <div className='more-detail'>
+                            <span className='val'>{Math.round(weather.main.feels_like)}°C</span>
+                            <p className='val-name'>Feels Like</p>
                         </div>
-                        <div className="temp">
-                            <span className='temperature'>{Math.round(weather.main.temp)}°C</span>
-                            <p key={val.id} className='C-detail'>{capitalizeFirst}</p>
-                            <p className='C-detail'><IoLocationSharp /> {weather.name}, {weather.sys.country}</p>
-                        </div>
-                        <div className="other-details">
-                            <li className='grid-box'>
-                                <img src={humi} alt="loading.." className="icon" />
-                                <div className='more-detail'>
-                                    <span className='val'>{Math.round(weather.main.humidity)}%</span>
-                                    <p className='val-name'>Humidity</p>
-                                </div>
-                            </li>
-                            <li className='grid-box'>
-                                <img src={feel} alt="loading.." className="icon" />
-                                <div className='more-detail'>
-                                    <span className='val'>{Math.round(weather.main.feels_like)}°C</span>
-                                    <p className='val-name'>Feels Like</p>
-                                </div>
-                            </li>
-                        </div>
-                    </div>
-                })
-            }
+                    </li>
+                </div>
+            </div>
         </>
     )
 }
